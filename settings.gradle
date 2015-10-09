@@ -1,0 +1,2 @@
+rootProject.name = 'reactdate'
+include ':app'

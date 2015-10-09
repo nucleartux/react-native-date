@@ -1,0 +1,33 @@
+{
+  "name": "react-native-date",
+  "version": "1.0.1",
+  "description": "React Native date and time pickers for Android",
+  "main": "index.android.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nucleartux/react-native-date.git"
+  },
+  "keywords": [
+    "react-component",
+    "react",
+    "react-native",
+    "android",
+    "mobile",
+    "native"
+  ],
+  "peerDependencies": {
+    "react-native": ">=0.5"
+  },
+  "author": {
+    "name": "Adrov Igor"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nucleartux/react-native-date/issues"
+  },
+  "homepage": "https://github.com/nucleartux/react-native-date#readme",
+  "readmeFilename": "README.md",
+}
