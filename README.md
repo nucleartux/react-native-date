@@ -35,8 +35,9 @@ dependencies {
 ```java
 ...
 import me.nucleartux.date.ReactDatePackage; // import
+import android.support.v4.app.FragmentActivity;
 
-public class MainActivity extends Activity implements DefaultHardwareBackBtnHandler {
+public class MainActivity extends FragmentActivity implements DefaultHardwareBackBtnHandler { // ! extends from FragmentActivity
 
     private ReactInstanceManager mReactInstanceManager;
     private ReactRootView mReactRootView;
