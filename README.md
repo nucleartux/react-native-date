@@ -51,7 +51,7 @@ public class MainActivity extends FragmentActivity implements DefaultHardwareBac
                 .setBundleAssetName("index.android.bundle")
                 .setJSMainModuleName("index.android")
                 .addPackage(new MainReactPackage())
-                .addPackage(new ReactDatePackage()) // register react date package here
+                .addPackage(new ReactDatePackage(this)) // register react date package here
                 .setUseDeveloperSupport(BuildConfig.DEBUG)
                 .setInitialLifecycleState(LifecycleState.RESUMED)
                 .build();
