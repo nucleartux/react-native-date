@@ -35,7 +35,6 @@ public class DatePicker extends DialogFragment
 
         Dialog picker = new DatePickerDialog(getActivity(), this,
                 year, month, day);
-        picker.getDatePicker().setCalendarViewShown(false);
         // picker.setTitle(getResources().getString(R.string.choose_date));
 
         return picker;
