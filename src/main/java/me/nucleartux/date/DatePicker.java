@@ -44,7 +44,7 @@ public class DatePicker extends DialogFragment
     public void onDateSet(android.widget.DatePicker datePicker, int year,
             int month, int day) {
         if(!isCalled) {
-            mSuccessCallback.invoke(year + "-" + month + "-" + day);
+            mSuccessCallback.invoke(year, month, day);
         }
         isCalled = true;
     }
