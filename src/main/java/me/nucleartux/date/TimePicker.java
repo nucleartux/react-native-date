@@ -42,7 +42,7 @@ public class TimePicker extends DialogFragment
     @Override
     public void onTimeSet(android.widget.TimePicker datePicker, int hour, int minute) {
         if(!isCalled) {
-            mSuccessCallback.invoke(hour + ":" + minute);
+            mSuccessCallback.invoke(hour, minute);
         }
         isCalled = true;
     }

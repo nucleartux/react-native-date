@@ -72,8 +72,8 @@ var { AppRegistry,StyleSheet,Text,View,TouchableOpacity,NativeModules } = React;
 
 var AwesomeProject = React.createClass({
     handleClick: function () {
-      NativeModules.DateAndroid.showTimepicker(function() {}, function(date) {
-        console.log(date);
+      NativeModules.DateAndroid.showTimepicker(function() {}, function(hour, minute) {
+        console.log(hour + ":" + minute);
       });
     },
     render: function() {
