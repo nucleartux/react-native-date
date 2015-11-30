@@ -33,6 +33,7 @@ dependencies {
 #### Step 4 - Register React Package
 
 ```java
+// file: android/app/source/main/java/com/{projectName}.MainActivity.java
 ...
 import me.nucleartux.date.ReactDatePackage; // import
 import android.support.v4.app.FragmentActivity;
