@@ -33,19 +33,8 @@ public class TimePicker extends DialogFragment
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        Calendar c = null;
-
-        if (mInitialDate == null)
-        {
-          c = Calendar.getInstance();
-        }
-        else
-        {
-          c = mInitialDate;
-        }
-
-        int hour = c.get(Calendar.HOUR_OF_DAY);
-        int minute = c.get(Calendar.MINUTE);
+        int hour = mInitialDate.get(Calendar.HOUR_OF_DAY);
+        int minute = mInitialDate.get(Calendar.MINUTE);
 
         // Create a new instance of TimePickerDialog and return it
         return new TimePickerDialog(getActivity(), this, hour, minute,

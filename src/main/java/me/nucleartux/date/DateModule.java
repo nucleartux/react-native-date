@@ -9,10 +9,7 @@ import com.facebook.react.bridge.Callback;
 
 import java.util.Map;
 import java.util.HashMap;
-import java.util.Calendar;
-import java.util.Locale;
-import java.text.SimpleDateFormat;
-import java.text.ParseException;
+
 
 import android.support.v4.app.DialogFragment;
 import android.app.Activity;
@@ -38,7 +35,7 @@ public class DateModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void showDatepickerWithInitialDate(String initialDateString, Callback errorCallback, Callback successCallback) {
-    DialogFragment dateDialog = new DatePicker(parseDate(initialDateString), errorCallback, successCallback);
+    DialogFragment dateDialog = new DatePicker(DateFormatHelper.parseDate(initialDateString), errorCallback, successCallback);
     dateDialog.show(mActivity.getSupportFragmentManager(), "datePicker");
   }
 
@@ -48,31 +45,8 @@ public class DateModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void showTimepickerWithInitialDate(String initialDateString, Callback errorCallback, Callback successCallback) {
-    DialogFragment dateDialog = new TimePicker(parseDate(initialDateString), errorCallback, successCallback);
+  public void showTimepickerWithInitialTime(String initialDateString, Callback errorCallback, Callback successCallback) {
+    DialogFragment dateDialog = new TimePicker(DateFormatHelper.parseDate(initialDateString), errorCallback, successCallback);
     dateDialog.show(mActivity.getSupportFragmentManager(), "timePicker");
-  }
-
-  private Calendar parseDate(String date)
-  {
-    Calendar initialDate = null;
-
-    if (date != null && date != "")
-    {
-      SimpleDateFormat df = new SimpleDateFormat();
-
-      try
-      {
-        initialDate = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US);
-        initialDate.setTime(sdf.parse(date));
-      }
-      catch (ParseException e)
-      {
-        return null;
-      }
-    }
-
-    return initialDate;
   }
 }
