@@ -41,7 +41,7 @@ public class DateModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void showTimepicker(Callback errorCallback, Callback successCallback) {
-    this.showTimepickerWithInitialDate(null, errorCallback, successCallback);
+    this.showTimepickerWithInitialTime(null, errorCallback, successCallback);
   }
 
   @ReactMethod
