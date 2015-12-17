@@ -10,6 +10,7 @@ import com.facebook.react.bridge.Callback;
 import java.util.Map;
 import java.util.HashMap;
 
+
 import android.support.v4.app.DialogFragment;
 import android.app.Activity;
 import android.support.v4.app.FragmentActivity;
@@ -29,13 +30,23 @@ public class DateModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void showDatepicker(Callback errorCallback, Callback successCallback) {
-    DialogFragment dateDialog = new DatePicker(errorCallback, successCallback);
+    this.showDatepickerWithInitialDate(null, errorCallback, successCallback);
+  }
+
+  @ReactMethod
+  public void showDatepickerWithInitialDate(String initialDateString, Callback errorCallback, Callback successCallback) {
+    DialogFragment dateDialog = new DatePicker(DateFormatHelper.parseDate(initialDateString), errorCallback, successCallback);
     dateDialog.show(mActivity.getSupportFragmentManager(), "datePicker");
   }
 
   @ReactMethod
   public void showTimepicker(Callback errorCallback, Callback successCallback) {
-    DialogFragment dateDialog = new TimePicker(errorCallback, successCallback);
+    this.showTimepickerWithInitialDate(null, errorCallback, successCallback);
+  }
+
+  @ReactMethod
+  public void showTimepickerWithInitialTime(String initialDateString, Callback errorCallback, Callback successCallback) {
+    DialogFragment dateDialog = new TimePicker(DateFormatHelper.parseDate(initialDateString), errorCallback, successCallback);
     dateDialog.show(mActivity.getSupportFragmentManager(), "timePicker");
   }
 }

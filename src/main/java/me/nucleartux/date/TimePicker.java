@@ -21,18 +21,20 @@ public class TimePicker extends DialogFragment
     private Callback mSuccessCallback;
     private boolean isCalled;
 
-    public TimePicker(Callback errorCallback, Callback successCallback)
+    private Calendar mInitialDate;
+
+    public TimePicker(Calendar initialDate, Callback errorCallback, Callback successCallback)
     {
         isCalled = false;
         mErrorCallback = errorCallback;
         mSuccessCallback = successCallback;
+        mInitialDate = initialDate;
     }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        final Calendar c = Calendar.getInstance();
-        int hour = c.get(Calendar.HOUR_OF_DAY);
-        int minute = c.get(Calendar.MINUTE);
+        int hour = mInitialDate.get(Calendar.HOUR_OF_DAY);
+        int minute = mInitialDate.get(Calendar.MINUTE);
 
         // Create a new instance of TimePickerDialog and return it
         return new TimePickerDialog(getActivity(), this, hour, minute,
