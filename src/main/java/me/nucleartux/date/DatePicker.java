@@ -18,17 +18,29 @@ public class DatePicker extends DialogFragment
     private Callback mErrorCallback;
     private Callback mSuccessCallback;
     private boolean isCalled;
+    private Calendar mInitialDate;
 
-    public DatePicker(Callback errorCallback, Callback successCallback)
+    public DatePicker(Calendar initialDate, Callback errorCallback, Callback successCallback)
     {
         isCalled = false;
         mErrorCallback = errorCallback;
         mSuccessCallback = successCallback;
+        mInitialDate = initialDate;
     }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        final Calendar c = Calendar.getInstance();
+        Calendar c = null;
+
+        if (mInitialDate == null)
+        {
+          c = Calendar.getInstance();
+        }
+        else
+        {
+          c = mInitialDate;
+        }
+
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
