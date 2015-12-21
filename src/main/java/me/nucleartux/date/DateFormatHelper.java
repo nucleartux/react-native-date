@@ -15,7 +15,7 @@ public class DateFormatHelper {
 
       try
       {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.US);
         initialDate.setTime(sdf.parse(date));
       }
       catch (ParseException e)
