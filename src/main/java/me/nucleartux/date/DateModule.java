@@ -35,10 +35,13 @@ public class DateModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void showDatepickerWithInitialAndStartDate(String initialDateString,
-            String startDateString, Callback errorCallback, Callback successCallback) {
+  public void showDatepickerWithInitialStartEndDate(String initialDateString,
+            String startDateString, String endDateString, Callback errorCallback,
+            Callback successCallback) {
     DialogFragment dateDialog = new DatePicker(DateFormatHelper.parseDate(initialDateString),
-            DateFormatHelper.parseDate(startDateString), errorCallback, successCallback);
+            DateFormatHelper.parseDate(startDateString),
+            DateFormatHelper.parseDate(endDateString),
+            errorCallback, successCallback);
     dateDialog.show(mActivity.getSupportFragmentManager(), "datePicker");
   }
 

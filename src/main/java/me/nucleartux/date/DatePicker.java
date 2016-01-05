@@ -17,6 +17,7 @@ public class DatePicker extends DialogFragment
     private boolean isCalled;
     private Calendar mInitialDate;
     private Calendar mStartDate;
+    private Calendar mEndDate;
 
     public DatePicker(Calendar initialDate, Callback errorCallback, Callback successCallback) {
         isCalled = false;
@@ -25,13 +26,14 @@ public class DatePicker extends DialogFragment
         mInitialDate = initialDate;
     }
 
-    public DatePicker(Calendar initialDate, Calendar startDate, Callback errorCallback,
-                      Callback successCallback) {
+    public DatePicker(Calendar initialDate, Calendar startDate, Calendar endDate,
+                      Callback errorCallback, Callback successCallback) {
         isCalled = false;
         mErrorCallback = errorCallback;
         mSuccessCallback = successCallback;
         mInitialDate = initialDate;
         mStartDate = startDate;
+        mEndDate = endDate;
     }
 
     @Override
@@ -44,6 +46,10 @@ public class DatePicker extends DialogFragment
 
         if (mStartDate != null) {
             picker.getDatePicker().setMinDate(mStartDate.getTimeInMillis());
+        }
+
+        if (mEndDate != null) {
+            picker.getDatePicker().setMaxDate(mEndDate.getTimeInMillis());
         }
 
         return picker;
