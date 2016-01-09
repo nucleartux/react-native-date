@@ -1,16 +1,13 @@
 package me.nucleartux.date;
 
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.widget.Button;
-import android.widget.TextView;
+
+import com.facebook.react.bridge.Callback;
 
 import java.util.Calendar;
-import com.facebook.react.bridge.Callback;
 
 public class DatePicker extends DialogFragment
         implements DatePickerDialog.OnDateSetListener {
@@ -19,13 +16,24 @@ public class DatePicker extends DialogFragment
     private Callback mSuccessCallback;
     private boolean isCalled;
     private Calendar mInitialDate;
+    private Calendar mMinDate;
+    private Calendar mMaxDate;
 
-    public DatePicker(Calendar initialDate, Callback errorCallback, Callback successCallback)
-    {
+    public DatePicker(Calendar initialDate, Callback errorCallback, Callback successCallback) {
         isCalled = false;
         mErrorCallback = errorCallback;
         mSuccessCallback = successCallback;
         mInitialDate = initialDate;
+    }
+
+    public DatePicker(Calendar initialDate, Calendar minDate, Calendar maxDate,
+                      Callback errorCallback, Callback successCallback) {
+        isCalled = false;
+        mErrorCallback = errorCallback;
+        mSuccessCallback = successCallback;
+        mInitialDate = initialDate;
+        mMinDate = minDate;
+        mMaxDate = maxDate;
     }
 
     @Override
@@ -34,9 +42,15 @@ public class DatePicker extends DialogFragment
         int month = mInitialDate.get(Calendar.MONTH);
         int day = mInitialDate.get(Calendar.DAY_OF_MONTH);
 
-        Dialog picker = new DatePickerDialog(getActivity(), this,
-                year, month, day);
-        // picker.setTitle(getResources().getString(R.string.choose_date));
+        DatePickerDialog picker = new DatePickerDialog(getActivity(), this, year, month, day);
+
+        if (mMinDate != null) {
+            picker.getDatePicker().setMinDate(mMinDate.getTimeInMillis());
+        }
+
+        if (mMaxDate != null) {
+            picker.getDatePicker().setMaxDate(mMaxDate.getTimeInMillis());
+        }
 
         return picker;
     }

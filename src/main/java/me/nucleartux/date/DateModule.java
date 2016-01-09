@@ -1,19 +1,12 @@
 package me.nucleartux.date;
 
-import com.facebook.react.bridge.NativeModule;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentActivity;
+
+import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.bridge.Callback;
-
-import java.util.Map;
-import java.util.HashMap;
-
-
-import android.support.v4.app.DialogFragment;
-import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
 
 public class DateModule extends ReactContextBaseJavaModule {
   private FragmentActivity mActivity = null;
@@ -34,8 +27,21 @@ public class DateModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void showDatepickerWithInitialDate(String initialDateString, Callback errorCallback, Callback successCallback) {
-    DialogFragment dateDialog = new DatePicker(DateFormatHelper.parseDate(initialDateString), errorCallback, successCallback);
+  public void showDatepickerWithInitialDate(String initialDateString, Callback errorCallback,
+                                            Callback successCallback) {
+    DialogFragment dateDialog = new DatePicker(DateFormatHelper.parseDate(initialDateString),
+            errorCallback, successCallback);
+    dateDialog.show(mActivity.getSupportFragmentManager(), "datePicker");
+  }
+
+  @ReactMethod
+  public void showDatepickerWithInitialMinMaxDate(String initialDateString,
+            String minDateString, String maxDateString, Callback errorCallback,
+            Callback successCallback) {
+    DialogFragment dateDialog = new DatePicker(DateFormatHelper.parseDate(initialDateString),
+            DateFormatHelper.parseDate(minDateString),
+            DateFormatHelper.parseDate(maxDateString),
+            errorCallback, successCallback);
     dateDialog.show(mActivity.getSupportFragmentManager(), "datePicker");
   }
 
@@ -45,8 +51,10 @@ public class DateModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void showTimepickerWithInitialTime(String initialDateString, Callback errorCallback, Callback successCallback) {
-    DialogFragment dateDialog = new TimePicker(DateFormatHelper.parseDate(initialDateString), errorCallback, successCallback);
+  public void showTimepickerWithInitialTime(String initialDateString, Callback errorCallback,
+                                            Callback successCallback) {
+    DialogFragment dateDialog = new TimePicker(DateFormatHelper.parseDate(initialDateString),
+            errorCallback, successCallback);
     dateDialog.show(mActivity.getSupportFragmentManager(), "timePicker");
   }
 }

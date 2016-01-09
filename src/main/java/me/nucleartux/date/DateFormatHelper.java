@@ -9,10 +9,8 @@ public class DateFormatHelper {
   public static Calendar parseDate(String date) {
     Calendar initialDate = Calendar.getInstance();
 
-    if (date != null && date != "")
+    if (date != null && !date.equals(""))
     {
-      SimpleDateFormat df = new SimpleDateFormat();
-
       try
       {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.US);
