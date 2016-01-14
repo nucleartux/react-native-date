@@ -6,14 +6,14 @@ import java.text.SimpleDateFormat;
 import java.text.ParseException;
 
 public class DateFormatHelper {
-  public static Calendar parseDate(String date) {
+  public static Calendar parseDate(String date, String dateTimeFormat) {
     Calendar initialDate = Calendar.getInstance();
 
     if (date != null && !date.equals(""))
     {
       try
       {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.US);
+        SimpleDateFormat sdf = new SimpleDateFormat(dateTimeFormat);
         initialDate.setTime(sdf.parse(date));
       }
       catch (ParseException e)
