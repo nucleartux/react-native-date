@@ -1,6 +1,6 @@
 package me.nucleartux.date;
 
-import android.support.v4.app.FragmentActivity;
+import android.app.Activity;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;
@@ -13,9 +13,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class ReactDatePackage implements ReactPackage {
-    private FragmentActivity mActivity = null;
+    private Activity mActivity = null;
 
-    public ReactDatePackage(FragmentActivity activity){
+    public ReactDatePackage(Activity activity){
         mActivity = activity;
     }
 

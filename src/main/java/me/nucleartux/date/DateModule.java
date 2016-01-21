@@ -1,7 +1,7 @@
 package me.nucleartux.date;
 
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentActivity;
+import android.app.Activity;
+import android.app.DialogFragment;
 
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -9,9 +9,9 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 
 public class DateModule extends ReactContextBaseJavaModule {
-  private FragmentActivity mActivity = null;
+  private Activity mActivity = null;
 
-  public DateModule(ReactApplicationContext reactContext, FragmentActivity activity) {
+  public DateModule(ReactApplicationContext reactContext, Activity activity) {
     super(reactContext);
     mActivity = activity;
   }
@@ -31,7 +31,7 @@ public class DateModule extends ReactContextBaseJavaModule {
                                             Callback successCallback) {
     DialogFragment dateDialog = new DatePicker(DateFormatHelper.parseDate(initialDateString),
             errorCallback, successCallback);
-    dateDialog.show(mActivity.getSupportFragmentManager(), "datePicker");
+    dateDialog.show(mActivity.getFragmentManager(), "datePicker");
   }
 
   @ReactMethod
@@ -42,7 +42,7 @@ public class DateModule extends ReactContextBaseJavaModule {
             DateFormatHelper.parseDate(minDateString),
             DateFormatHelper.parseDate(maxDateString),
             errorCallback, successCallback);
-    dateDialog.show(mActivity.getSupportFragmentManager(), "datePicker");
+    dateDialog.show(mActivity.getFragmentManager(), "datePicker");
   }
 
   @ReactMethod
@@ -55,6 +55,6 @@ public class DateModule extends ReactContextBaseJavaModule {
                                             Callback successCallback) {
     DialogFragment dateDialog = new TimePicker(DateFormatHelper.parseDate(initialDateString),
             errorCallback, successCallback);
-    dateDialog.show(mActivity.getSupportFragmentManager(), "timePicker");
+    dateDialog.show(mActivity.getFragmentManager(), "timePicker");
   }
 }

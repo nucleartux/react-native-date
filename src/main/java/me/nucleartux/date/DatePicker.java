@@ -3,7 +3,7 @@ package me.nucleartux.date;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
+import android.app.DialogFragment;
 
 import com.facebook.react.bridge.Callback;
 
