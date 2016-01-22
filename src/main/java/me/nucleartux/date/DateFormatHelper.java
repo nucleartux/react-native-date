@@ -24,4 +24,22 @@ public class DateFormatHelper {
 
     return initialDate;
   }
+
+  public static Calendar parseDateInMilliseconds(long ms) {
+    Calendar initialDate = Calendar.getInstance();
+
+    if (ms > 0)
+    {
+      try
+      {
+        initialDate.setTimeInMillis(ms);
+      }
+      catch (Exception e)
+      {
+        return Calendar.getInstance();
+      }
+    }
+
+    return initialDate;
+  }
 }
