@@ -23,13 +23,13 @@ public class DateModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void showDatepicker(Callback errorCallback, Callback successCallback) {
-    this.showDatepickerWithInitialDate(null, errorCallback, successCallback);
+    this.showDatepickerWithInitialDate(null, null, errorCallback, successCallback);
   }
 
   @ReactMethod
-  public void showDatepickerWithInitialDate(String initialDateString, Callback errorCallback,
+  public void showDatepickerWithInitialDate(String dateTimeFormat, String initialDateString, Callback errorCallback,
                                             Callback successCallback) {
-    DialogFragment dateDialog = new DatePicker(DateFormatHelper.parseDate(initialDateString),
+    DialogFragment dateDialog = new DatePicker(DateFormatHelper.parseDate(initialDateString, dateTimeFormat),
             errorCallback, successCallback);
     dateDialog.show(mActivity.getFragmentManager(), "datePicker");
   }
@@ -43,25 +43,25 @@ public class DateModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void showDatepickerWithInitialMinMaxDate(String initialDateString,
+  public void showDatepickerWithInitialMinMaxDate(String dateTimeFormat, String initialDateString,
             String minDateString, String maxDateString, Callback errorCallback,
             Callback successCallback) {
-    DialogFragment dateDialog = new DatePicker(DateFormatHelper.parseDate(initialDateString),
-            DateFormatHelper.parseDate(minDateString),
-            DateFormatHelper.parseDate(maxDateString),
+    DialogFragment dateDialog = new DatePicker(DateFormatHelper.parseDate(initialDateString, dateTimeFormat),
+            DateFormatHelper.parseDate(minDateString, dateTimeFormat),
+            DateFormatHelper.parseDate(maxDateString, dateTimeFormat),
             errorCallback, successCallback);
     dateDialog.show(mActivity.getFragmentManager(), "datePicker");
   }
 
   @ReactMethod
   public void showTimepicker(Callback errorCallback, Callback successCallback) {
-    this.showTimepickerWithInitialTime(null, errorCallback, successCallback);
+    this.showTimepickerWithInitialTime(null, null, errorCallback, successCallback);
   }
 
   @ReactMethod
-  public void showTimepickerWithInitialTime(String initialDateString, Callback errorCallback,
+  public void showTimepickerWithInitialTime(String dateTimeFormat, String initialDateString, Callback errorCallback,
                                             Callback successCallback) {
-    DialogFragment dateDialog = new TimePicker(DateFormatHelper.parseDate(initialDateString),
+    DialogFragment dateDialog = new TimePicker(DateFormatHelper.parseDate(initialDateString, dateTimeFormat),
             errorCallback, successCallback);
     dateDialog.show(mActivity.getFragmentManager(), "timePicker");
   }
