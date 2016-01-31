@@ -1,15 +1,24 @@
 /**
- * @providesModule ToastAndroid
+ * @providesModule DateAndroid
  */
 
 'use strict';
 
 /**
- * This exposes the native ToastAndroid module as a JS module. This has a function 'show'
- * which takes the following parameters:
+ * This exposes the native DatePicker module as a JS module. This has the static functions:
  *
- * 1. String message: A string with the text to toast
- * 2. int duration: The duration of the toast. May be ToastAndroid.SHORT or ToastAndroid.LONG
+ * showDatepicker(Callback errorCallback, Callback successCallback)
+ * showDatepickerWithInitialDate(String initialDateString, Callback errorCallback, Callback successCallback)
+ * showDatepickerWithInitialDateInMilliseconds(String initialDateString, Callback errorCallback, Callback successCallback)
+ * showDatepickerWithInitialMinMaxDate(String initialDateString, String minDateString, String maxDateString, Callback errorCallback, Callback successCallback)
+ *
+ * showTimepicker(Callback errorCallback, Callback successCallback)
+ * showTimepickerWithInitialTime(String initialDateString, Callback errorCallback, Callback successCallback)
+ *
+ * The DatePicker invokes the successCallback with: mSuccessCallback.invoke(year, month, day);
+ * [The month comes from the `java.util.Calendar`, so it is going from 0-11]
+ * The TimePicker invokes the successCallback with: mSuccessCallback.invoke(hour, minute);
+ *
  */
 var { NativeModules } = require('react-native');
 module.exports = NativeModules.DateAndroid;
