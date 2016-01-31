@@ -62,7 +62,7 @@ import DateAndroid from 'react-native-date';
 const AwesomeProject = React.createClass({
   handleTimeClick: function () {
     DateAndroid.showTimepicker(function() {}, function(hour, minute) {
-      console.log(`${hour}:${minute+1});
+      console.log(`${hour}:${minute+1}`);
     });
   },
   handleDateClick: function () {
