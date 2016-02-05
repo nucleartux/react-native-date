@@ -65,4 +65,12 @@ public class DateModule extends ReactContextBaseJavaModule {
             errorCallback, successCallback);
     dateDialog.show(mActivity.getFragmentManager(), "timePicker");
   }
+
+    @ReactMethod
+    public void showTimepickerWithInitialDateInMilliseconds(String initialDateString, Callback errorCallback,
+                                              Callback successCallback) {
+        DialogFragment dateDialog = new TimePicker(DateFormatHelper.parseDateInMilliseconds(Long.parseLong(initialDateString)),
+                errorCallback, successCallback);
+        dateDialog.show(mActivity.getFragmentManager(), "timePicker");
+    }
 }
