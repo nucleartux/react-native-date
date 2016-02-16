@@ -13,17 +13,12 @@ import java.util.Collections;
 import java.util.List;
 
 public class ReactDatePackage implements ReactPackage {
-    private FragmentActivity mActivity = null;
-
-    public ReactDatePackage(FragmentActivity activity){
-        mActivity = activity;
-    }
-
+   
     @Override
     public List<NativeModule> createNativeModules(
                                 ReactApplicationContext reactContext) {
       List<NativeModule> modules = new ArrayList<>();
-      modules.add(new DateModule(reactContext, mActivity));
+      modules.add(new DateModule(reactContext));
       return modules;
     }
 
