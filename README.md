@@ -6,7 +6,7 @@ React Native date and time pickers for Android
 #### Step 1 - NPM Install
 
 ```shell
-npm install --save react-native-date
+npm install --save react-native-date@https://github.com/juggleru/react-native-date.git --save
 ```
 #### Step 2 - Update Gradle Settings
 
@@ -36,31 +36,17 @@ dependencies {
 // file: android/app/source/main/java/com/{projectName}.MainActivity.java
 ...
 import me.nucleartux.date.ReactDatePackage; // import
-import android.support.v4.app.FragmentActivity;
 
 public class MainActivity extends FragmentActivity implements DefaultHardwareBackBtnHandler { // ! extends from FragmentActivity
-
-    private ReactInstanceManager mReactInstanceManager;
-    private ReactRootView mReactRootView;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mReactRootView = new ReactRootView(this);
-        mReactInstanceManager = ReactInstanceManager.builder()
-                .setApplication(getApplication())
-                .setBundleAssetName("index.android.bundle")
-                .setJSMainModuleName("index.android")
-                .addPackage(new MainReactPackage())
-                .addPackage(new ReactDatePackage(this)) // register react date package here
-                .setUseDeveloperSupport(BuildConfig.DEBUG)
-                .setInitialLifecycleState(LifecycleState.RESUMED)
-                .build();
-        mReactRootView.startReactApplication(mReactInstanceManager, "AwesomeProject", null);
-        setContentView(mReactRootView);
-    }
 ...
-
+    @Override
+    protected List<ReactPackage> getPackages() {
+      return Arrays.<ReactPackage>asList(
+        new MainReactPackage(),
+        new ReactDatePackage() // register react date package here
+      );
+    }
+}
 ```
 
 #### Step 5 - Require and use in Javascript
