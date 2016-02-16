@@ -1,7 +1,7 @@
 package me.nucleartux.date;
 
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentActivity;
+import android.app.DialogFragment;
+import android.app.Activity;
 
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -12,7 +12,6 @@ public class DateModule extends ReactContextBaseJavaModule {
 
   public DateModule(ReactApplicationContext reactContext) {
     super(reactContext);
-    mActivity = activity;
   }
 
   @Override
