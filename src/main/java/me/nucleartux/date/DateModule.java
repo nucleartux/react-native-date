@@ -9,9 +9,8 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 
 public class DateModule extends ReactContextBaseJavaModule {
-  private FragmentActivity mActivity = null;
 
-  public DateModule(ReactApplicationContext reactContext, FragmentActivity activity) {
+  public DateModule(ReactApplicationContext reactContext) {
     super(reactContext);
     mActivity = activity;
   }
@@ -31,7 +30,10 @@ public class DateModule extends ReactContextBaseJavaModule {
                                             Callback successCallback) {
     DialogFragment dateDialog = new DatePicker(DateFormatHelper.parseDate(initialDateString, dateTimeFormat),
             errorCallback, successCallback);
-    dateDialog.show(mActivity.getSupportFragmentManager(), "datePicker");
+    Activity activity = getCurrentActivity();
+    if (activity != null) {
+      dateDialog.show(activity.getFragmentManager(), "datePicker");
+    }
   }
 
   @ReactMethod
@@ -42,7 +44,10 @@ public class DateModule extends ReactContextBaseJavaModule {
             DateFormatHelper.parseDate(minDateString, dateTimeFormat),
             DateFormatHelper.parseDate(maxDateString, dateTimeFormat),
             errorCallback, successCallback);
-    dateDialog.show(mActivity.getSupportFragmentManager(), "datePicker");
+    Activity activity = getCurrentActivity();
+    if (activity != null) {
+      dateDialog.show(activity.getFragmentManager(), "datePicker");
+    }
   }
 
   @ReactMethod
@@ -55,6 +60,9 @@ public class DateModule extends ReactContextBaseJavaModule {
                                             Callback successCallback) {
     DialogFragment dateDialog = new TimePicker(DateFormatHelper.parseDate(initialDateString, dateTimeFormat),
             errorCallback, successCallback);
-    dateDialog.show(mActivity.getSupportFragmentManager(), "timePicker");
+    Activity activity = getCurrentActivity();
+    if (activity != null) {
+      dateDialog.show(activity.getFragmentManager(), "datePicker");
+    }
   }
 }
