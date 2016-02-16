@@ -1,6 +1,6 @@
 package me.nucleartux.date;
 
-import android.support.v4.app.FragmentActivity;
+import android.app.Activity;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;
@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class ReactDatePackage implements ReactPackage {
-   
+
     @Override
     public List<NativeModule> createNativeModules(
                                 ReactApplicationContext reactContext) {
