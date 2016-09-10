@@ -9,11 +9,9 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 
 public class DateModule extends ReactContextBaseJavaModule {
-  private Activity mActivity = null;
 
-  public DateModule(ReactApplicationContext reactContext, Activity activity) {
+  public DateModule(ReactApplicationContext reactContext) {
     super(reactContext);
-    mActivity = activity;
   }
 
   @Override
@@ -31,7 +29,10 @@ public class DateModule extends ReactContextBaseJavaModule {
                                             Callback successCallback) {
     DialogFragment dateDialog = new DatePicker(DateFormatHelper.parseDate(initialDateString),
             errorCallback, successCallback);
-    dateDialog.show(mActivity.getFragmentManager(), "datePicker");
+    Activity activity = getCurrentActivity();
+    if (activity != null) {
+      dateDialog.show(activity.getFragmentManager(), "datePicker");
+    }
   }
 
   @ReactMethod
@@ -39,7 +40,10 @@ public class DateModule extends ReactContextBaseJavaModule {
                                             Callback successCallback) {
     DialogFragment dateDialog = new DatePicker(DateFormatHelper.parseDateInMilliseconds(Long.parseLong(initialDateString)),
             errorCallback, successCallback);
-    dateDialog.show(mActivity.getFragmentManager(), "datePicker");
+    Activity activity = getCurrentActivity();
+    if (activity != null) {
+      dateDialog.show(activity.getFragmentManager(), "datePicker");
+    }
   }
 
   @ReactMethod
@@ -50,7 +54,10 @@ public class DateModule extends ReactContextBaseJavaModule {
             DateFormatHelper.parseDate(minDateString),
             DateFormatHelper.parseDate(maxDateString),
             errorCallback, successCallback);
-    dateDialog.show(mActivity.getFragmentManager(), "datePicker");
+    Activity activity = getCurrentActivity();
+    if (activity != null) {
+      dateDialog.show(activity.getFragmentManager(), "datePicker");
+    }
   }
 
   @ReactMethod
@@ -63,14 +70,20 @@ public class DateModule extends ReactContextBaseJavaModule {
                                             Callback successCallback) {
     DialogFragment dateDialog = new TimePicker(DateFormatHelper.parseDate(initialDateString),
             errorCallback, successCallback);
-    dateDialog.show(mActivity.getFragmentManager(), "timePicker");
+    Activity activity = getCurrentActivity();
+    if (activity != null) {
+      dateDialog.show(activity.getFragmentManager(), "timePicker");
+    }
   }
 
-    @ReactMethod
-    public void showTimepickerWithInitialDateInMilliseconds(String initialDateString, Callback errorCallback,
-                                              Callback successCallback) {
-        DialogFragment dateDialog = new TimePicker(DateFormatHelper.parseDateInMilliseconds(Long.parseLong(initialDateString)),
-                errorCallback, successCallback);
-        dateDialog.show(mActivity.getFragmentManager(), "timePicker");
+  @ReactMethod
+  public void showTimepickerWithInitialDateInMilliseconds(String initialDateString, Callback errorCallback,
+                                            Callback successCallback) {
+      DialogFragment dateDialog = new TimePicker(DateFormatHelper.parseDateInMilliseconds(Long.parseLong(initialDateString)),
+              errorCallback, successCallback);
+    Activity activity = getCurrentActivity();
+    if (activity != null) {
+      dateDialog.show(activity.getFragmentManager(), "timePicker");
     }
+  }
 }
