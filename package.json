@@ -18,6 +18,9 @@
     "mobile",
     "native"
   ],
+  "peerDependencies": {
+    "react-native": ">=0.5"
+  },
   "author": {
     "name": "Adrov Igor"
   },

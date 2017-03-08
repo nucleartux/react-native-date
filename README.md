@@ -43,7 +43,7 @@ public class MainActivity extends ReactActivity {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
         new MainReactPackage()
-      , new ReactDatePackage() // register react date package here
+      , new ReactDatePackage(this) // register react date package here
       );
     }
 
