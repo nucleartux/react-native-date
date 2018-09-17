@@ -56,29 +56,39 @@ public class MainActivity extends ReactActivity {
 ```js
 // file: index.android.js
 
-var React = require('react-native');
-var { AppRegistry,StyleSheet,Text,View,TouchableOpacity,NativeModules } = React;
+import React, { AppRegistry, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import DateAndroid from 'react-native-date';
 
-var AwesomeProject = React.createClass({
-    handleClick: function () {
-      NativeModules.DateAndroid.showTimepicker(function() {}, function(hour, minute) {
-        console.log(hour + ":" + minute);
-      });
-    },
-    render: function() {
-        return (
-            <View style={styles.container}>
-              <TouchableOpacity onPress={this.handleClick}>
-                <Text style={styles.instructions}>
-                  Click me
-                </Text>
-              </TouchableOpacity>
-            </View>
-        );
-    }
+const AwesomeProject = React.createClass({
+  handleTimeClick: function () {
+    DateAndroid.showTimepicker(function() {}, function(hour, minute) {
+      console.log(`${hour}:${minute+1}`);
+    });
+  },
+  handleDateClick: function () {
+    DateAndroid.showDatepicker(function() {}, function(year, month, day) {
+      console.log(`${year}/${month+1}/${day}`);
+    });
+  },
+  render: function() {
+    return (
+      <View style={styles.container}>
+        <TouchableOpacity onPress={this.handleDateClick}>
+          <Text style={styles.instructions}>
+            Click me to select Date
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.handleTimeClick}>
+          <Text style={styles.instructions}>
+            Click me to select Time
+          </Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
 });
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   instructions: {
     textAlign: 'center',
     color: '#333333',
